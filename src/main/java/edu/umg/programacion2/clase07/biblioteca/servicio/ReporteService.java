@@ -88,6 +88,11 @@ public class ReporteService {
         Map<String, Integer> conteo = new HashMap<>();
         List<PrestamoDetalle> activos = prestamoDAO.listarPrestamosActivosConLibro();
         // TODO: recorrer "activos" y llenar "conteo" usando getTituloLibro() como llave.
+        
+        for (PrestamoDetalle detalle : activos) {
+            String titulo = detalle.getTituloLibro();
+            conteo.put(titulo, conteo.getOrDefault(titulo, 0) + 1);
+        }
 
         return conteo;
     }
